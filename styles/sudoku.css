@@ -1,0 +1,56 @@
+.sector {
+    outline: 2px solid black;
+}
+.cell {
+    outline: 1px solid black;
+    /*height: 6vh;*/
+    height:45px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+#board {
+    /*width: 50vw;*/
+    width: 405px;
+    outline: 4px solid black;
+}#digit-table {
+    /*width: 430px;*/
+    /*with eraser:*/
+    width: 445px;
+}
+.digit-cell {
+    outline: 1px solid black;
+    height:40px;
+    width:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.selectable:hover {
+    background-color: #f5dd90;
+}
+.selected {
+    background-color: #f5dd90;
+}
+.user-input {
+    background-color: #f2f2f2;
+}
+.initial {
+    background-color: rgb(230, 230, 230);
+}
+.error {
+    background-color: #f76c5e;
+}
+td {
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+th {
+    padding-right: 15px;
+    padding-left: 15px;
+    border-bottom: 1px solid black;
+    padding-bottom: 15px;
+    text-align: center;
+}
