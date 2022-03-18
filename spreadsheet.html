@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Spreadsheet</title>
+    <link rel="stylesheet" href="styles/spreadsheet.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <script type="javascript" src="js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  
+  <body>
+    <table>
+      <tr>
+        <td class="tile header_tile">Student ID</td>
+        <td class="tile header_tile col_head">Asmt 1</td>
+        <td class="tile header_tile col_head">Asmt 2</td>
+        <td class="tile header_tile col_head">Asmt 2</td>
+      </tr>
+      <tr>
+        <td class="tile header_tile row_head">100000000</td>
+        <td class="tile body_tile col_1">4.5</td>
+        <td class="tile body_tile col_2">3.75</td>
+        <td class="tile body_tile col_3">3.4</td>
+      </tr>
+      <tr>
+        <td class="tile header_tile row_head">100000001</td>
+        <td class="tile body_tile col_1">4.25</td>
+        <td class="tile body_tile col_2">4.12</td>
+        <td class="tile body_tile col_3">4.25</td>
+      </tr>
+      <tr>
+        <td class="tile header_tile row_head">100000002</td>
+        <td class="tile body_tile col_1">5.0</td>
+        <td class="tile body_tile col_2">4.75</td>
+        <td class="tile body_tile col_3">4.5</td>
+      </tr>
+    </table>
+
+    <script>
+      //Diselect All
+      function diselectAll(){
+        d3.selectAll(".body_tile")
+            .style("background-color", "white");
+      }
+      //Select Row
+      function selectRow(rowIndex){
+        diselectAll();
+        d3.selectAll("#row_"+rowIndex).selectAll(".body_tile")
+          .style("background-color", "#e0e0ff");
+      }
+      //Select Column
+      function selectColumn(colIndex){
+        diselectAll();
+        d3.selectAll(".col_"+colIndex)
+          .style("background-color", "#e0e0ff");
+        //console.log(colIndex);
+      }
+
+
+      $(function(){
+        //Apply onClick function to body tiles
+        d3.selectAll(".body_tile")
+          .on("click", function(){
+            diselectAll();
+            d3.select(this)
+              .style("background-color", "#e0e0ff");
+        })
+
+        //Set ids and apply onclick functions to row heads
+        d3.selectAll("tr")
+          .each(function(d, i){
+            d3.select(this)
+              .attr("id", "row_"+i)
+            d3.select(this).selectAll(".row_head").on("click", function(){
+              selectRow(i);
+            })
+        })
+
+        //Applies onclick functions to column heads
+        d3.selectAll(".col_head")
+          .each(function(d, i){
+            d3.select(this).on("click", function(){
+              selectColumn(i+1);
+            })
+        })
+
+        //Debug code
+        //selectColumn(2);
+      }); 
+    </script>
+  </body>
+</html>

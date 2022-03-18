@@ -1,0 +1,13 @@
+.tile {
+    outline: 1px solid black;
+    height: 30px;
+    padding-left: 6px;
+    padding-right: 6px;
+    width: 110px;
+}
+.header_tile {
+    font-weight: bold;
+    background-color: #d0d0d0;
+    justify-content:center;
+    align-items:center;
+}
